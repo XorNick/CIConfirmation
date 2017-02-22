@@ -24,13 +24,14 @@ public class CIConfirmation extends JavaPlugin {
             return false;
         }
         Player player = (Player) sender;
+        UUID playerUUID = player.getUniqueId();
         if (cmd.getName().equalsIgnoreCase("clearinventory")) {
-            if (confirmed.contains(player.getUniqueId())) {
+            if (confirmed.contains(playerUUID)) {
                 player.getInventory().clear();
                 player.sendMessage(ChatColor.GREEN + "Your inventory has successfully been cleared.");
                 return true;
             } else {
-                confirmed.add(player.getUniqueId());
+                confirmed.add(playerUUID);
                 player.sendMessage(ChatColor.GREEN + "You just performed the command /clearinventory. If you are sure about this, please repeat the command.");
                 return true;
             }
